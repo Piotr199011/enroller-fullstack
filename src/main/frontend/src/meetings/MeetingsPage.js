@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import NewMeetingForm from "./NewMeetingForm";
 import MeetingsList from "./MeetingsList";
 
+
 export default function MeetingsPage({username}) {
     const [meetings, setMeetings] = useState([]);
     const [addingNewMeeting, setAddingNewMeeting] = useState(false);
@@ -30,10 +31,15 @@ export default function MeetingsPage({username}) {
         }
     }
 
-    function handleDeleteMeeting(meeting) {
-        const nextMeetings = meetings.filter(m => m !== meeting);
+    async function handleDeleteMeeting(meeting) {
+        const respoonse=await(fetch(`/api/meetings/${meeting.id}`, {
+            method: 'DELETE',}))
+        if (respoonse.ok){
+            const nextMeetings = meetings.filter(m => m !== meeting);
         setMeetings(nextMeetings);
-    }
+    }}
+
+
 
 
 
