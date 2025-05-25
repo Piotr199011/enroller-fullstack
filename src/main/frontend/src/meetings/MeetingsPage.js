@@ -25,7 +25,8 @@ export default function MeetingsPage({username}) {
             headers: { 'Content-Type': 'application/json' }
         });
         if (response.ok) {
-            const nextMeetings = [...meetings, meeting];
+            const newMeetings = await response.json();
+            const nextMeetings = [...meetings, newMeetings];
             setMeetings(nextMeetings);
             setAddingNewMeeting(false);
         }
@@ -35,6 +36,7 @@ export default function MeetingsPage({username}) {
         const respoonse=await(fetch(`/api/meetings/${meeting.id}`, {
             method: 'DELETE',}))
         if (respoonse.ok){
+
             const nextMeetings = meetings.filter(m => m !== meeting);
         setMeetings(nextMeetings);
     }}

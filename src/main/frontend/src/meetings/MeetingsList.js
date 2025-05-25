@@ -7,6 +7,8 @@ export default function MeetingsList({meetings,onDelete}) {
                 <th>Nazwa spotkania</th>
                 <th>Opis</th>
                 <th>Akcje</th>
+                <th>Dodaj uczestnika</th>
+                <th>Usuń uczestnika</th>
             </tr>
             </thead>
             <tbody>
@@ -16,6 +18,10 @@ export default function MeetingsList({meetings,onDelete}) {
                     <td>{meeting.description}</td>
                     <td><button type="button"
                     onClick={()=>onDelete(meeting)}>Usuń</button> </td>
+                    <td><button type="button"
+                                onClick={()=>onDelete(meeting)}>Dodaj </button> </td>
+                    <td><button type="button"
+                                onClick={()=>onDelete(meeting)}>Usuń </button> </td>
                 </tr>)
             }
             </tbody>
